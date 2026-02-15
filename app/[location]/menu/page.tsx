@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getLocation, locations } from '@/data/locations';
 import { getMenuData } from '@/data/menu';
+import { BreadcrumbStructuredData } from '@/components/StructuredData';
+import { formatPrice } from '@/utils/format';
 import {
   MenuNav,
   FloatingNav,
@@ -50,6 +52,12 @@ export default async function MenuPage({ params }: MenuPageProps) {
   const menu = getMenuData(location.id);
 
   return (
+    <>
+    <BreadcrumbStructuredData items={[
+      { name: 'Home', href: '/' },
+      { name: location.name, href: `/${location.id}` },
+      { name: 'Menu', href: `/${location.id}/menu` },
+    ]} />
     <main id="main-content" className={styles.menuPage}>
       <header className={styles.header}>
         <div className={styles.headerContent}>
@@ -256,7 +264,7 @@ export default async function MenuPage({ params }: MenuPageProps) {
                   <span className={styles.extraDescription}>{item.description}</span>
                 )}
               </div>
-              <span className={styles.extraPrice}>${item.price}</span>
+              <span className={styles.extraPrice}>${formatPrice(item.price)}</span>
             </div>
           ))}
         </div>
@@ -278,9 +286,9 @@ export default async function MenuPage({ params }: MenuPageProps) {
                   )}
                 </div>
                 <div className={styles.drinkPrices}>
-                  {drink.glassPrice && <span>5oz Glass: ${drink.glassPrice}</span>}
-                  {drink.halfLiterPrice && <span>½L: ${drink.halfLiterPrice}</span>}
-                  {drink.bottlePrice && <span>Bottle: ${drink.bottlePrice}</span>}
+                  {drink.glassPrice && <span>5oz Glass: ${formatPrice(drink.glassPrice)}</span>}
+                  {drink.halfLiterPrice && <span>½L: ${formatPrice(drink.halfLiterPrice)}</span>}
+                  {drink.bottlePrice && <span>Bottle: ${formatPrice(drink.bottlePrice)}</span>}
                 </div>
               </div>
             ))}
@@ -299,9 +307,9 @@ export default async function MenuPage({ params }: MenuPageProps) {
                   )}
                 </div>
                 <div className={styles.drinkPrices}>
-                  {drink.glassPrice && <span>5oz Glass: ${drink.glassPrice}</span>}
-                  {drink.halfLiterPrice && <span>½L: ${drink.halfLiterPrice}</span>}
-                  {drink.bottlePrice && <span>Bottle: ${drink.bottlePrice}</span>}
+                  {drink.glassPrice && <span>5oz Glass: ${formatPrice(drink.glassPrice)}</span>}
+                  {drink.halfLiterPrice && <span>½L: ${formatPrice(drink.halfLiterPrice)}</span>}
+                  {drink.bottlePrice && <span>Bottle: ${formatPrice(drink.bottlePrice)}</span>}
                 </div>
               </div>
             ))}
@@ -317,7 +325,7 @@ export default async function MenuPage({ params }: MenuPageProps) {
                 {drink.variety && (
                   <span className={styles.drinkVariety}>{drink.variety}</span>
                 )}
-                <span className={styles.beerPrice}>${drink.singlePrice}</span>
+                <span className={styles.beerPrice}>${drink.singlePrice != null ? formatPrice(drink.singlePrice) : ''}</span>
               </div>
             ))}
           </div>
@@ -335,9 +343,9 @@ export default async function MenuPage({ params }: MenuPageProps) {
                   )}
                 </div>
                 <div className={styles.drinkPrices}>
-                  {drink.singlePrice && <span>${drink.singlePrice}</span>}
-                  {drink.glassPrice && <span>5oz: ${drink.glassPrice}</span>}
-                  {drink.halfLiterPrice && <span>500ml: ${drink.halfLiterPrice}</span>}
+                  {drink.singlePrice && <span>${formatPrice(drink.singlePrice)}</span>}
+                  {drink.glassPrice && <span>5oz: ${formatPrice(drink.glassPrice)}</span>}
+                  {drink.halfLiterPrice && <span>500ml: ${formatPrice(drink.halfLiterPrice)}</span>}
                 </div>
               </div>
             ))}
@@ -353,9 +361,9 @@ export default async function MenuPage({ params }: MenuPageProps) {
                   <span className={styles.drinkName}>{drink.name}</span>
                 </div>
                 <div className={styles.drinkPrices}>
-                  {drink.glassPrice && <span>Small (4oz): ${drink.glassPrice}</span>}
-                  {drink.halfLiterPrice && <span>Medium (10oz): ${drink.halfLiterPrice}</span>}
-                  {drink.bottlePrice && <span>Pot (720ml): ${drink.bottlePrice}</span>}
+                  {drink.glassPrice && <span>Small (4oz): ${formatPrice(drink.glassPrice)}</span>}
+                  {drink.halfLiterPrice && <span>Medium (10oz): ${formatPrice(drink.halfLiterPrice)}</span>}
+                  {drink.bottlePrice && <span>Pot (720ml): ${formatPrice(drink.bottlePrice)}</span>}
                 </div>
               </div>
             ))}
@@ -371,7 +379,7 @@ export default async function MenuPage({ params }: MenuPageProps) {
                 {drink.variety && (
                   <span className={styles.drinkVariety}>{drink.variety}</span>
                 )}
-                <span className={styles.beerPrice}>${drink.singlePrice}</span>
+                <span className={styles.beerPrice}>${drink.singlePrice != null ? formatPrice(drink.singlePrice) : ''}</span>
               </div>
             ))}
           </div>
@@ -388,5 +396,6 @@ export default async function MenuPage({ params }: MenuPageProps) {
         </div>
       </section>
     </main>
+    </>
   );
 }

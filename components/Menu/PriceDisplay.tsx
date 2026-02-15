@@ -1,4 +1,5 @@
 import type { PriceOption, ProteinPriceOption } from '@/data/types';
+import { formatPrice as fmt } from '@/utils/format';
 import styles from './PriceDisplay.module.css';
 
 interface SinglePriceProps {
@@ -7,7 +8,7 @@ interface SinglePriceProps {
 }
 
 export function SinglePrice({ price, size = 'medium' }: SinglePriceProps) {
-  return <span className={`${styles.price} ${styles[size]}`}>${price}</span>;
+  return <span className={`${styles.price} ${styles[size]}`}>${fmt(price)}</span>;
 }
 
 interface MultiPriceProps {
@@ -30,7 +31,7 @@ export function MultiPrice({ prices, layout = 'vertical' }: MultiPriceProps) {
             <span className={styles.gridSize}>{option.size || ''}</span>
             <span className={styles.gridDescription}>{option.description || ''}</span>
             <span className={styles.gridPieces}>{option.pieces || ''}</span>
-            <span className={styles.gridPriceCell}>${option.price}</span>
+            <span className={styles.gridPriceCell}>${fmt(option.price)}</span>
           </div>
         ))}
       </div>
@@ -50,7 +51,7 @@ export function MultiPrice({ prices, layout = 'vertical' }: MultiPriceProps) {
           {option.pieces && (
             <span className={styles.pieces}>{option.pieces}</span>
           )}
-          <span className={styles.price}>${option.price}</span>
+          <span className={styles.price}>${fmt(option.price)}</span>
         </div>
       ))}
     </div>
@@ -67,7 +68,7 @@ export function ProteinPrice({ prices }: ProteinPriceProps) {
       {prices.map((option, index) => (
         <div key={index} className={styles.proteinOption}>
           <span className={styles.proteinLabel}>{option.protein}</span>
-          <span className={styles.price}>${option.price}</span>
+          <span className={styles.price}>${fmt(option.price)}</span>
         </div>
       ))}
     </div>
@@ -84,11 +85,11 @@ export function AlaCartePrice({ sushiPrice, sashimiPrice }: AlaCartePriceProps) 
     <div className={styles.alaCartePrice}>
       <div className={styles.priceRow}>
         <span className={styles.typeLabel}>sushi</span>
-        <span className={styles.price}>${sushiPrice}</span>
+        <span className={styles.price}>${fmt(sushiPrice)}</span>
       </div>
       <div className={styles.priceRow}>
         <span className={styles.typeLabel}>sashimi</span>
-        <span className={styles.price}>${sashimiPrice}</span>
+        <span className={styles.price}>${fmt(sashimiPrice)}</span>
       </div>
     </div>
   );

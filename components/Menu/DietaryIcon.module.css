@@ -29,8 +29,8 @@
 }
 
 .spicy {
-  background-color: transparent;
-  padding: 0;
+  background-color: #e53935;
+  color: var(--color-white);
 }
 
 .iconGroup {

@@ -22,7 +22,7 @@ const iconConfig: Record<
   },
   spicy: {
     label: 'Spicy',
-    abbrev: '🌶',
+    abbrev: 'S',
     className: styles.spicy,
   },
 };
