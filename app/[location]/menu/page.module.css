@@ -54,6 +54,8 @@
 
 .section {
   padding: var(--space-8) 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
 
 .sectionTitle {
