@@ -4,6 +4,9 @@
   align-items: center;
   gap: var(--space-6);
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.45);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
 }
 
 .heroTitle {
@@ -134,18 +137,20 @@
 .aboutSection h2 {
   font-size: var(--text-3xl);
   margin-bottom: var(--space-6);
+  color: #000000;
 }
 
 .aboutSection p {
   max-width: 700px;
   margin: 0 auto var(--space-6);
   line-height: 1.8;
+  color: #000000;
 }
 
 .aboutSection blockquote {
   font-style: italic;
   font-size: var(--text-lg);
-  color: var(--color-text-light);
+  color: #000000;
   margin: 0;
 }
 
