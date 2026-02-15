@@ -17,23 +17,16 @@ interface VideoBackgroundProps {
   overlayOpacity?: number;
 }
 
-function getReducedMotionSnapshot() {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
-function getReducedMotionServerSnapshot() {
-  return false;
-}
-
 function subscribeToReducedMotion(callback: () => void) {
-  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  mediaQuery.addEventListener('change', callback);
-  return () => mediaQuery.removeEventListener('change', callback);
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  mq.addEventListener('change', callback);
+  return () => mq.removeEventListener('change', callback);
 }
 
-function isMobileDevice() {
-  if (typeof window === 'undefined') return false;
-  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+function subscribeToCoarsePointer(callback: () => void) {
+  const mq = window.matchMedia('(pointer: coarse) and (hover: none)');
+  mq.addEventListener('change', callback);
+  return () => mq.removeEventListener('change', callback);
 }
 
 export default function VideoBackground({
@@ -43,20 +36,23 @@ export default function VideoBackground({
   overlayOpacity = 0.4,
 }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [bgImage] = useState(() =>
     MOBILE_BACKGROUNDS[Math.floor(Math.random() * MOBILE_BACKGROUNDS.length)]
   );
 
   const prefersReducedMotion = useSyncExternalStore(
     subscribeToReducedMotion,
-    getReducedMotionSnapshot,
-    getReducedMotionServerSnapshot
+    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    () => false
   );
 
-  useEffect(() => {
-    setIsMobile(isMobileDevice());
-  }, []);
+  const isMobile = useSyncExternalStore(
+    subscribeToCoarsePointer,
+    () => window.matchMedia('(pointer: coarse) and (hover: none)').matches,
+    () => false
+  );
+
+  const showVideo = !isMobile && !prefersReducedMotion;
 
   useEffect(() => {
     if (isMobile || !videoRef.current) return;
@@ -87,7 +83,7 @@ export default function VideoBackground({
           <video
             ref={videoRef}
             className={styles.video}
-            autoPlay={!prefersReducedMotion}
+            autoPlay={showVideo}
             loop
             muted
             playsInline
