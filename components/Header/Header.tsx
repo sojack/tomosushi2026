@@ -1,9 +1,7 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Location } from '@/data/types';
+import MobileMenuToggle from './MobileMenuToggle';
 import styles from './Header.module.css';
 
 interface HeaderProps {
@@ -12,8 +10,6 @@ interface HeaderProps {
 }
 
 export default function Header({ location, variant = 'solid' }: HeaderProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const basePath = location ? `/${location.id}` : '';
 
   const navItems = location
@@ -41,18 +37,11 @@ export default function Header({ location, variant = 'solid' }: HeaderProps) {
           />
         </Link>
 
-        <nav
-          className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}
-          aria-label="Main navigation"
-        >
+        <MobileMenuToggle>
           <ul className={styles.navList}>
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={styles.navLink}
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href={item.href} className={styles.navLink}>
                   {item.label}
                 </Link>
               </li>
@@ -68,19 +57,7 @@ export default function Header({ location, variant = 'solid' }: HeaderProps) {
               Order Online
             </a>
           )}
-        </nav>
-
-        <button
-          className={styles.menuToggle}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-expanded={isMenuOpen}
-          aria-controls="main-nav"
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-        >
-          <span className={styles.menuIcon} aria-hidden="true">
-            {isMenuOpen ? '✕' : '☰'}
-          </span>
-        </button>
+        </MobileMenuToggle>
       </div>
     </header>
   );
