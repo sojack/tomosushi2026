@@ -2,15 +2,9 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import type { GalleryImage } from '@/data/gallery';
 import { Lightbox } from './Lightbox';
 import styles from './GalleryGrid.module.css';
-
-export interface GalleryImage {
-  id: number;
-  src: string;
-  alt: string;
-  category: 'sashimi' | 'roll' | 'dinner';
-}
 
 interface GalleryGridProps {
   images: GalleryImage[];

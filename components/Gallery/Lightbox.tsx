@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import styles from './Lightbox.module.css';
 
@@ -23,6 +23,9 @@ export function Lightbox({
   hasPrev,
   hasNext,
 }: LightboxProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -31,24 +34,53 @@ export function Lightbox({
         onPrev();
       } else if (e.key === 'ArrowRight' && hasNext) {
         onNext();
+      } else if (e.key === 'Tab') {
+        // Focus trap: keep focus within the lightbox
+        const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+          'button:not([disabled])'
+        );
+        if (!focusable || focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     },
     [onClose, onPrev, onNext, hasPrev, hasNext]
   );
 
   useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+
     document.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
+      previouslyFocused?.focus();
     };
   }, [handleKeyDown]);
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div
+      ref={dialogRef}
+      className={styles.overlay}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Image: ${alt}`}
+      onClick={onClose}
+    >
       <button
+        ref={closeButtonRef}
         className={styles.closeButton}
         onClick={onClose}
         aria-label="Close lightbox"
@@ -93,7 +125,7 @@ export function Lightbox({
         </button>
       )}
 
-      <p className={styles.caption}>{alt}</p>
+      <p className={styles.caption} aria-live="polite">{alt}</p>
     </div>
   );
 }
