@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import styles from './error.module.css';
 
 export default function Error({
@@ -19,9 +20,9 @@ export default function Error({
           <button onClick={reset} className={styles.retryButton}>
             Try Again
           </button>
-          <a href="/" className={styles.homeLink}>
+          <Link href="/" className={styles.homeLink}>
             Go Home
-          </a>
+          </Link>
         </div>
       </div>
     </main>
