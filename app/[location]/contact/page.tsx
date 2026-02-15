@@ -26,6 +26,7 @@ export async function generateMetadata({
   return {
     title: `Contact - ${location.name}`,
     description: `Contact Tomo Sushi ${location.name}. Address: ${location.address}. Phone: ${location.phone}.`,
+    alternates: { canonical: `/${location.id}/contact` },
   };
 }
 

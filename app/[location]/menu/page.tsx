@@ -35,6 +35,7 @@ export async function generateMetadata({
   return {
     title: `Menu - ${location.name}`,
     description: `View the full menu at Tomo Sushi ${location.name}. Fresh sushi, sashimi, rolls, and Japanese cuisine.`,
+    alternates: { canonical: `/${location.id}/menu` },
   };
 }
 

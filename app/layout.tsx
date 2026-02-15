@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     "Tomo Sushi",
   ],
   metadataBase: new URL("https://www.tomosushi.ca"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_CA",

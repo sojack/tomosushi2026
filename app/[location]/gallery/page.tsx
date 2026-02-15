@@ -28,6 +28,7 @@ export async function generateMetadata({
   return {
     title: `Gallery - ${location.name}`,
     description: `View photos from Tomo Sushi ${location.name}. Fresh sushi, beautiful presentations, and our restaurant atmosphere.`,
+    alternates: { canonical: `/${location.id}/gallery` },
   };
 }
 

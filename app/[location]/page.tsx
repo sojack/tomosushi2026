@@ -28,6 +28,7 @@ export async function generateMetadata({
   return {
     title: `${location.name} Location`,
     description: `Visit Tomo Sushi in ${location.name}. Fresh sushi, sashimi, and Japanese cuisine. ${location.address}`,
+    alternates: { canonical: `/${location.id}` },
   };
 }
 

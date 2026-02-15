@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'Learn about Tomo Sushi, our commitment to quality Japanese cuisine, and our passion for serving fresh sushi and sashimi.',
+  alternates: { canonical: '/about' },
 };
 
 export default function AboutPage() {
