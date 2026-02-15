@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import CurrentYear from './CurrentYear';
 import styles from './Footer.module.css';
 
 interface FooterProps {
@@ -7,8 +8,6 @@ interface FooterProps {
 }
 
 export default function Footer({ variant = 'default' }: FooterProps) {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className={`${styles.footer} ${styles[variant]}`}>
       <div className={styles.container}>
@@ -53,7 +52,7 @@ export default function Footer({ variant = 'default' }: FooterProps) {
 
         <div className={styles.copyright}>
           <p>
-            &copy; {currentYear} Tomo Sushi. All rights reserved.
+            &copy; <CurrentYear /> Tomo Sushi. All rights reserved.
           </p>
         </div>
       </div>
