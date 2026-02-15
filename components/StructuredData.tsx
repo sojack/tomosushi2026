@@ -1,10 +1,31 @@
 import type { Location } from '@/data/types';
 
+/** Parse "11:30am - 10:00pm" into { opens: "11:30", closes: "22:00" } */
+function parseHoursRange(range: string): { opens: string; closes: string } {
+  const [openStr, closeStr] = range.split('-').map((s) => s.trim());
+  return { opens: to24Hour(openStr), closes: to24Hour(closeStr) };
+}
+
+function to24Hour(time: string): string {
+  const match = time.match(/^(\d{1,2}):(\d{2})\s*(am|pm)$/i);
+  if (!match) return time;
+  let hours = parseInt(match[1], 10);
+  const minutes = match[2];
+  const period = match[3].toLowerCase();
+  if (period === 'pm' && hours !== 12) hours += 12;
+  if (period === 'am' && hours === 12) hours = 0;
+  return `${hours.toString().padStart(2, '0')}:${minutes}`;
+}
+
 interface RestaurantStructuredDataProps {
   location: Location;
 }
 
 export function RestaurantStructuredData({ location }: RestaurantStructuredDataProps) {
+  const weekdayHours = parseHoursRange(location.hours.weekday);
+  const saturdayHours = parseHoursRange(location.hours.saturday);
+  const sundayHours = parseHoursRange(location.hours.sunday);
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Restaurant',
@@ -27,20 +48,20 @@ export function RestaurantStructuredData({ location }: RestaurantStructuredDataP
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '11:30',
-        closes: '22:00',
+        opens: weekdayHours.opens,
+        closes: weekdayHours.closes,
       },
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: 'Saturday',
-        opens: '12:00',
-        closes: '22:00',
+        opens: saturdayHours.opens,
+        closes: saturdayHours.closes,
       },
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: 'Sunday',
-        opens: '12:00',
-        closes: '21:30',
+        opens: sundayHours.opens,
+        closes: sundayHours.closes,
       },
     ],
     acceptsReservations: true,
