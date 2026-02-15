@@ -1,0 +1,54 @@
+.galleryPage {
+  background-color: var(--color-background);
+  padding-top: 60px;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: var(--color-bar);
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+}
+
+.headerContent h1 {
+  color: var(--color-white);
+  font-size: var(--text-4xl);
+  margin: 0 0 var(--space-2);
+}
+
+.headerContent p {
+  color: var(--color-grey);
+  font-size: var(--text-lg);
+  margin: 0;
+}
+
+.gallerySection {
+  padding: var(--space-12) 0;
+}
+
+.container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-12);
+  font-size: var(--text-lg);
+  line-height: 1.8;
+}
+
+.instagramLink {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+
+.instagramLink a {
+  color: var(--color-primary);
+  font-weight: var(--font-semibold);
+}

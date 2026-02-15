@@ -1,0 +1,222 @@
+.aboutPage {
+  background-color: var(--color-background);
+  padding-top: 60px;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: var(--color-bar);
+  padding: var(--space-16) var(--space-6);
+  text-align: center;
+}
+
+.headerContent h1 {
+  color: var(--color-white);
+  font-size: var(--text-4xl);
+  margin: 0;
+}
+
+.container {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.storySection {
+  padding: var(--space-16) 0;
+  background-color: var(--color-surface);
+}
+
+.storyContent {
+  text-align: center;
+}
+
+.storyContent h2 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-8);
+}
+
+.storyContent p {
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto var(--space-6);
+}
+
+.storyContent blockquote {
+  font-style: italic;
+  font-size: var(--text-xl);
+  color: var(--color-text-light);
+  margin: var(--space-8) 0 0;
+  padding: var(--space-6);
+  border-left: 4px solid var(--color-primary);
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.storyContent cite {
+  display: block;
+  margin-top: var(--space-3);
+  font-size: var(--text-base);
+  font-style: normal;
+}
+
+.valuesSection {
+  padding: var(--space-16) 0;
+}
+
+.valuesSection h2 {
+  font-size: var(--text-3xl);
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+
+.valuesGrid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.valueCard {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.valueCard h3 {
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.valueCard p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.halalSection {
+  padding: var(--space-16) 0;
+  background-color: var(--color-surface);
+}
+
+.halalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .halalContent {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+.halalLogo {
+  flex-shrink: 0;
+}
+
+.halalContent h2 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
+}
+
+.halalContent p {
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
+}
+
+.halalContent p:last-child {
+  margin-bottom: 0;
+}
+
+.locationsSection {
+  padding: var(--space-16) 0;
+}
+
+.locationsSection h2 {
+  font-size: var(--text-3xl);
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+
+.locationsGrid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .locationsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.locationCard {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.locationCard h3 {
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.locationCard address {
+  font-style: normal;
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
+}
+
+.locationPhone {
+  margin-bottom: var(--space-4);
+}
+
+.locationPhone a {
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+}
+
+.locationPhone a:hover {
+  color: var(--color-primary);
+}
+
+.locationHours {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-6);
+}
+
+.locationHours p {
+  margin-bottom: var(--space-1);
+}
+
+.locationLink {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-semibold);
+  transition: background-color var(--transition-fast);
+}
+
+.locationLink:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+}

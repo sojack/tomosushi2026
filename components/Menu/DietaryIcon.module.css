@@ -1,0 +1,40 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-bold);
+  border-radius: var(--radius-sm);
+}
+
+.small {
+  font-size: var(--text-xs);
+  padding: 2px 4px;
+  min-width: 20px;
+}
+
+.medium {
+  font-size: var(--text-sm);
+  padding: 3px 6px;
+  min-width: 24px;
+}
+
+.vegetarian {
+  background-color: #4caf50;
+  color: var(--color-white);
+}
+
+.glutenFree {
+  background-color: #ff9800;
+  color: var(--color-white);
+}
+
+.spicy {
+  background-color: transparent;
+  padding: 0;
+}
+
+.iconGroup {
+  display: inline-flex;
+  gap: var(--space-1);
+  margin-left: var(--space-2);
+}

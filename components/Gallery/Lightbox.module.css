@@ -1,0 +1,97 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 3rem;
+  cursor: pointer;
+  padding: var(--space-2);
+  line-height: 1;
+  z-index: 1001;
+  transition: opacity 0.2s ease;
+}
+
+.closeButton:hover {
+  opacity: 0.7;
+}
+
+.imageContainer {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  max-width: 1200px;
+  cursor: default;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--color-white);
+  font-size: 3rem;
+  cursor: pointer;
+  padding: var(--space-4) var(--space-6);
+  z-index: 1001;
+  transition: background-color 0.2s ease;
+  border-radius: var(--radius-md);
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.prevButton {
+  left: var(--space-4);
+}
+
+.nextButton {
+  right: var(--space-4);
+}
+
+.caption {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-white);
+  font-size: var(--text-lg);
+  text-align: center;
+  padding: var(--space-2) var(--space-4);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-md);
+  max-width: 90%;
+}
+
+@media (max-width: 768px) {
+  .navButton {
+    font-size: 2rem;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .closeButton {
+    font-size: 2.5rem;
+  }
+
+  .caption {
+    font-size: var(--text-base);
+  }
+}

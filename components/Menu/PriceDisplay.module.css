@@ -1,0 +1,149 @@
+.price {
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+}
+
+.small {
+  font-size: var(--text-sm);
+}
+
+.medium {
+  font-size: var(--text-base);
+}
+
+.large {
+  font-size: var(--text-lg);
+}
+
+.multiPrice {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.multiPrice.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.priceOption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.priceOption:last-child {
+  border-bottom: none;
+}
+
+.sizeLabel {
+  font-weight: var(--font-semibold);
+  color: var(--color-primary-dark);
+  min-width: 60px;
+}
+
+.optionDescription {
+  flex: 1 1 100%;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  margin-left: 60px;
+  order: 1;
+}
+
+.pieces {
+  color: var(--color-text-light);
+  font-size: var(--text-sm);
+}
+
+.proteinPrice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.proteinOption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.proteinLabel {
+  color: var(--color-text);
+  text-transform: capitalize;
+}
+
+.alaCartePrice {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-align: right;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.typeLabel {
+  color: var(--color-text-light);
+  font-style: italic;
+  font-size: var(--text-sm);
+}
+
+/* Grid layout for tray items */
+.gridPrice {
+  display: grid;
+  grid-template-columns: 70px 1fr 60px 60px;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.gridHeader {
+  display: contents;
+  font-weight: var(--font-semibold);
+  color: var(--color-primary-dark);
+}
+
+.gridHeader > span {
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.gridRow {
+  display: contents;
+}
+
+.gridSize {
+  font-weight: var(--font-semibold);
+  color: var(--color-primary-dark);
+}
+
+.gridDescription {
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.gridPieces {
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.gridPriceCell {
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .gridPrice {
+    grid-template-columns: 60px 1fr 50px 50px;
+    font-size: var(--text-xs);
+  }
+}

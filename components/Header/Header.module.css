@@ -1,0 +1,140 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  transition: background-color var(--transition-base);
+}
+
+.solid {
+  background-color: var(--color-bar);
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.navLink {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  font-size: var(--text-sm);
+  letter-spacing: 0.05em;
+  transition: color var(--transition-fast);
+}
+
+.navLink:hover {
+  color: var(--color-primary-light);
+}
+
+.orderButton {
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  transition: background-color var(--transition-fast);
+}
+
+.orderButton:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+.menuToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-white);
+  font-size: var(--text-xl);
+}
+
+.menuIcon {
+  line-height: 1;
+}
+
+/* Mobile menu */
+@media (max-width: 767px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-8);
+    background-color: var(--color-bar);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+  }
+
+  .nav.open {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navList {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .navLink {
+    font-size: var(--text-xl);
+  }
+
+  .orderButton {
+    font-size: var(--text-base);
+    padding: var(--space-3) var(--space-6);
+  }
+}
+
+/* Desktop navigation */
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+
+  .menuToggle {
+    display: none;
+  }
+}

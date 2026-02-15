@@ -1,0 +1,290 @@
+.menuPage {
+  background-color: var(--color-background);
+  padding-top: 60px;
+}
+
+.header {
+  background-color: var(--color-bar);
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+}
+
+.headerContent h1 {
+  color: var(--color-white);
+  font-size: var(--text-4xl);
+  margin: 0 0 var(--space-2);
+}
+
+.headerContent p {
+  color: var(--color-grey);
+  font-size: var(--text-lg);
+  margin: 0;
+}
+
+.notice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .notice {
+    flex-direction: row;
+    text-align: left;
+    max-width: var(--container-lg);
+    margin: var(--space-6) auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.halalLogo {
+  flex-shrink: 0;
+}
+
+.notice p {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.section {
+  padding: var(--space-8) 0;
+}
+
+.sectionTitle {
+  font-size: var(--text-3xl);
+  color: var(--color-white);
+  background-color: var(--color-grey-dark);
+  padding: var(--space-4);
+  text-align: center;
+  margin: 0 0 var(--space-6);
+}
+
+.sectionNote {
+  text-align: center;
+  color: var(--color-text-light);
+  font-style: italic;
+  margin: 0 0 var(--space-6);
+}
+
+.itemGrid {
+  display: grid;
+  gap: var(--space-4);
+  padding: 0 var(--space-4);
+  max-width: var(--container-xl);
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .itemGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.alaCarteContainer {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 768px) {
+  .alaCarteContainer {
+    padding: var(--space-6);
+  }
+}
+
+/* Extras Section */
+.extrasGrid {
+  display: grid;
+  gap: var(--space-3);
+  padding: 0 var(--space-4);
+  max-width: var(--container-md);
+  margin: 0 auto;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.extraItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.extraItem:last-child {
+  border-bottom: none;
+}
+
+.extraInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.extraName {
+  font-family: var(--font-heading);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.vegIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  background-color: var(--color-success);
+  color: var(--color-white);
+  border-radius: 50%;
+}
+
+.extraDescription {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+}
+
+.extraPrice {
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* Drinks Section */
+.drinksSection {
+  margin-bottom: var(--space-8);
+  padding: 0 var(--space-4);
+  max-width: var(--container-lg);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.drinkCategory {
+  font-size: var(--text-xl);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  padding: var(--space-2) var(--space-4);
+  text-align: center;
+  margin: 0 0 var(--space-4);
+}
+
+.drinksList {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.drinkItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.drinkItem:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 640px) {
+  .drinkItem {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.drinkInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drinkName {
+  font-family: var(--font-heading);
+  font-weight: var(--font-semibold);
+}
+
+.drinkVariety {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+}
+
+.drinkPrices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+.beerGrid {
+  display: grid;
+  gap: var(--space-3);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+@media (min-width: 480px) {
+  .beerGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .beerGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.beerItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2);
+  text-align: center;
+  border: 1px solid var(--color-grey);
+  border-radius: var(--radius-md);
+}
+
+.beerPrice {
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  margin-top: var(--space-1);
+}
+
+/* Promo Section (Roll Set Lunch) */
+.promoSection {
+  max-width: var(--container-lg);
+  margin: var(--space-8) auto;
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.subcategoryTitle {
+  font-size: var(--text-xl);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  padding: var(--space-2) var(--space-4);
+  margin: 0 0 var(--space-4);
+}
+
+.promoText {
+  font-size: var(--text-lg);
+  margin: var(--space-4) 0 0;
+  line-height: 1.6;
+}

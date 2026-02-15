@@ -1,66 +1,43 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from 'next/image';
+import VideoBackground from '@/components/VideoBackground';
+import LocationCard from '@/components/LocationCard';
+import { locations } from '@/data/locations';
+import styles from './page.module.css';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main id="main-content">
+      <VideoBackground
+        videoSrc="/videos/hero.mp4"
+        posterSrc="/images/video-1-poster.jpg"
+      >
+        <div className={styles.heroContent}>
+          <Image
+            src="/images/tomo.png"
+            alt="Tomo Sushi"
+            width={300}
+            height={100}
+            priority
+            className={styles.heroLogo}
+          />
+
+          <p className={styles.heroTagline}>
+            Food, in the end, in our own tradition, is something holy. It&apos;s
+            not about nutrients and calories.
+            <br />
+            It&apos;s about sharing. It&apos;s about honesty. It&apos;s about
+            identity.
           </p>
+
+          <h1 className="sr-only">Tomo Sushi - Choose Your Location</h1>
+
+          <div className={styles.locationCards}>
+            {locations.map((location) => (
+              <LocationCard key={location.id} location={location} />
+            ))}
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </VideoBackground>
+    </main>
   );
 }
