@@ -101,7 +101,6 @@ export interface Location {
     sunday: string;
   };
   orderOnlineUrl: string;
-  menuSlug: string;
   /** Google Maps embed URL from "Share > Embed a map" (no API key needed) */
   mapEmbedUrl?: string;
   instagramUrl?: string;

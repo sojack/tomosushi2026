@@ -19,7 +19,7 @@ export type {
 } from './types';
 
 // Locations
-export { locations, getLocation, getLocationBySlug } from './locations';
+export { locations, getLocation } from './locations';
 
 // Menu Data (per-location resolver)
 export { getMenuData } from './menu';
