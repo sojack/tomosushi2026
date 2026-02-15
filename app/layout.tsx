@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans, Montserrat } from "next/font/google";
 import { OrganizationStructuredData } from "@/components/StructuredData";
+import BackToTop from "@/components/BackToTop";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -35,6 +36,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.tomosushi.ca"),
   alternates: {
     canonical: "/",
+    languages: {
+      "en-CA": "/",
+    },
   },
   openGraph: {
     type: "website",
@@ -74,6 +78,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <BackToTop />
       </body>
     </html>
   );

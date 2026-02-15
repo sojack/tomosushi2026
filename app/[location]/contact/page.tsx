@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLocation, locations } from '@/data/locations';
+import { BreadcrumbStructuredData } from '@/components/StructuredData';
 import styles from './page.module.css';
 
 interface ContactPageProps {
@@ -42,6 +43,12 @@ export default async function ContactPage({ params }: ContactPageProps) {
   const mapQuery = encodeURIComponent(location.address);
 
   return (
+    <>
+    <BreadcrumbStructuredData items={[
+      { name: 'Home', href: '/' },
+      { name: location.name, href: `/${location.id}` },
+      { name: 'Contact', href: `/${location.id}/contact` },
+    ]} />
     <main id="main-content" className={styles.contactPage}>
       <header className={styles.header}>
         <div className={styles.headerContent}>
@@ -165,5 +172,6 @@ export default async function ContactPage({ params }: ContactPageProps) {
         </div>
       </section>
     </main>
+    </>
   );
 }

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import VideoBackground from '@/components/VideoBackground';
+import { BreadcrumbStructuredData } from '@/components/StructuredData';
 import { getLocation, locations } from '@/data/locations';
 import styles from './page.module.css';
 
@@ -41,6 +42,11 @@ export default async function LocationPage({ params }: LocationPageProps) {
   }
 
   return (
+    <>
+    <BreadcrumbStructuredData items={[
+      { name: 'Home', href: '/' },
+      { name: location.name, href: `/${location.id}` },
+    ]} />
     <main id="main-content">
       <VideoBackground
         videoSrc="/videos/hero.mp4"
@@ -122,5 +128,6 @@ export default async function LocationPage({ params }: LocationPageProps) {
         </div>
       </section>
     </main>
+    </>
   );
 }

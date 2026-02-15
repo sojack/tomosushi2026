@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLocation, locations } from '@/data/locations';
 import { getGalleryImages } from '@/data/gallery';
+import { BreadcrumbStructuredData } from '@/components/StructuredData';
 import { GalleryGrid } from '@/components/Gallery';
 import styles from './page.module.css';
 
@@ -43,6 +44,12 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
   const images = getGalleryImages(location.id);
 
   return (
+    <>
+    <BreadcrumbStructuredData items={[
+      { name: 'Home', href: '/' },
+      { name: location.name, href: `/${location.id}` },
+      { name: 'Gallery', href: `/${location.id}/gallery` },
+    ]} />
     <main id="main-content" className={styles.galleryPage}>
       <header className={styles.header}>
         <div className={styles.headerContent}>
@@ -78,5 +85,6 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
         </div>
       </section>
     </main>
+    </>
   );
 }

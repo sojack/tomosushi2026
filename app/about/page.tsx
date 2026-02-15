@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { BreadcrumbStructuredData } from '@/components/StructuredData';
 import { locations } from '@/data/locations';
 import styles from './page.module.css';
 
@@ -16,6 +17,10 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbStructuredData items={[
+        { name: 'Home', href: '/' },
+        { name: 'About', href: '/about' },
+      ]} />
       <Header variant="solid" />
       <main id="main-content" className={styles.aboutPage}>
         <header className={styles.header}>
